@@ -1,0 +1,40 @@
+{
+  "name": "art_finder_vuejs_spa",
+  "version": "1.0.0",
+  "description": "ArtBinder testament task, built as a simple SPA with Firebase data storage.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server"
+  },
+  "keywords": [
+    "vuejs",
+    "vue-js",
+    "webpack",
+    "firebase"
+  ],
+  "author": "victorpolko@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "file-loader": "^0.10.0",
+    "firebase": "^3.6.9",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.5.0",
+    "pug": "^2.0.0-beta11",
+    "sass-loader": "^5.0.1",
+    "style-loader": "^0.13.1",
+    "vue": "^2.1.10",
+    "vue-loader": "^10.3.0",
+    "vue-template-compiler": "^2.1.10",
+    "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.3.0"
+  }
+}
