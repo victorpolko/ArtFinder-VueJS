@@ -3,7 +3,8 @@
   .artworks-list
     .artwork(v-for="artwork in artworks")
       .cell
-        img(v-bind:src="artwork.image" height="150")
+        router-link(:to="{ name: 'artwork', params: { artwork_id: artwork.id } }")
+          img(:src="artwork.image" height="150")
       .cell {{ artwork.title }}
       .cell {{ artwork.artist }}, {{ artwork.year }}
       .cell {{ artwork.mediums }}
