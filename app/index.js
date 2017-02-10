@@ -8,7 +8,7 @@ import artwork from 'artwork/'
 import artworksList from 'artworks-list/'
 
 const routes = [
-  { name: 'index', path: '/artworks', component: artworksList },
+  { name: 'index', path: '/', component: artworksList },
   { name: 'artwork', path: '/artworks/:artwork_id', component: artwork }
 ]
 
