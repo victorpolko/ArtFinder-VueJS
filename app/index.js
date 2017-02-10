@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 // Components
+import artwork from 'artwork/'
 import artworksList from 'artworks-list/'
 
 const routes = [
