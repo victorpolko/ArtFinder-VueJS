@@ -1,16 +1,25 @@
 <template lang="pug">
 
-    .artwork
-      .cell
-        img(v-bind:src="artwork.image" height="150")
-      .cell {{ artwork.title }}
-      .cell {{ artwork.artist }}, {{ artwork.year }}
-      .cell {{ artwork.mediums }}
-      .cell
-        a(href="javascript:void(0)" v-on:click="togglePublished(artwork)") {{ status(artwork) }}
+  div
+    .uk-margin
+      ul.uk-breadcrumb
+        li
+          router-link(:to="{ name: 'index' }")
+            | All artworks
+        li.uk-active
+          span(v-show="artwork.title") {{ artwork.title }} by {{ artwork.artist }}
 
-      router-link(:to="{ name: 'index' }")
-        span Go to Index
+    .uk-align-center.uk-width-1-2(uk-grid)
+      div
+        .uk-card.uk-card-default
+          .uk-card-media-top
+            img(v-bind:src="artwork.image")
+            .uk-card-body
+              h3.uk-card-title {{ artwork.title }}
+              p {{ artwork.mediums }}
+              p {{ artwork.artist }}, {{ artwork.year }}
+              p
+                a(href="javascript:void(0)" v-on:click="togglePublished(artwork)") {{ status(artwork) }}
 
 </template>
 
