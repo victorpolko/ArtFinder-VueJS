@@ -27,6 +27,19 @@ export default {
       {
         test: /\.vue$/,
         use: 'vue-loader'
+      },
+
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' }
+        ]
+      },
+
+      {
+        test: /\.svg$/,
+        use: 'url-loader?limit=102400&name=[name]-[hash:base64].[ext]',
       }
     ]
   },
