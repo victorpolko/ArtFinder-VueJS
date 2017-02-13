@@ -1,13 +1,12 @@
 <template lang="pug">
 
-  div
-    .uk-margin
-      ul.uk-breadcrumb
-        li
-          router-link(:to="{ name: 'index' }")
-            | All artworks
-        li.uk-active
-          span(v-show="artwork.title") {{ artwork.title }} by {{ artwork.artist }}
+  .artwork
+    ul.uk-breadcrumb
+      li
+        router-link(:to="{ name: 'index' }")
+          | All artworks
+      li.uk-active
+        span(v-show="artwork.title") {{ artwork.title }} by {{ artwork.artist }}
 
     .uk-align-center.uk-width-1-2(uk-grid)
       .uk-card.uk-card-default
