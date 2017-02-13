@@ -6,11 +6,17 @@
         router-link.uk-navbar-item.uk-logo(:to="{ name: 'index' }")
           img(src="/logo.png")
 
+        .uk-navbar-item
+          form(action="javascript:void(0)")
+            input.uk-input.uk-form-width-medium(v-model="searchString" v-on:input="findArt" type="text" placeholder="Find art.." autofocus)
+
     ul.uk-tab.uk-flex-center
       li(v-bind:class="{ 'uk-active': isTab(0) }")
         a(href="#" v-on:click="setTab(0)") Published Artworks
       li(v-bind:class="{ 'uk-active': isTab(1) }")
         a(href="#" v-on:click="setTab(1)") Unpublished Artworks
+      li(v-bind:class="{ 'uk-active': isTab(2) }" v-show="searchString.length")
+        a(href="#" v-on:click="setTab(2)") Search
 
     div(v-if="isTab(0)")
       div(v-if="publishedArtworks().length")
@@ -87,6 +93,45 @@
                   use(xlink:href="#star")
                     title {{ artwork.published ? 'Unpublish me' : 'Publish me' }}
 
+      div(v-else)
+        img.uk-align-center.uk-width-1-4(src="/empty.png")
+
+    // Filtered Artworks tab content
+    div(v-if="isTab(2)")
+      div(v-if="filteredArtworks.length")
+        table.uk-table.uk-table-small.uk-table-middle
+          colgroup
+            col(width="30%")
+            col(width="20%")
+            col(width="15%")
+            col(width="15%")
+            col(width="10%")
+            col(width="10%")
+
+          thead
+            tr
+              th Representation
+              th Title
+              th Mediums
+              th Artist
+              th Year
+              th
+
+          tbody
+            tr(v-for="artwork in filteredArtworks")
+              td.uk-table-link
+                router-link.uk-text-center.uk-link-reset(:to="{ name: 'artwork', params: { artwork_id: artwork.id } }")
+                  img.uk-width-1-3(:src="artwork.image")
+              td.uk-table-link
+                router-link.uk-link-reset(:to="{ name: 'artwork', params: { artwork_id: artwork.id } }")
+                  | {{ artwork.title }}
+              td {{ artwork.mediums }}
+              td {{ artwork.artist }}
+              td {{ artwork.year }}
+              td.uk-text-center.published(v-on:click="togglePublished(artwork)")
+                svg.star(v-bind:class="{ published: artwork.published }")
+                  use(xlink:href="#star")
+                    title {{ artwork.published ? 'Unpublish me' : 'Publish me' }}
 
       div(v-else)
         img.uk-align-center.uk-width-1-4(src="/empty.png")

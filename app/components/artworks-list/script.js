@@ -3,8 +3,9 @@ import db from './../../firebase.js';
 export default {
   data() {
     return {
-      artworks: [],
-      tabIndex: 0
+      searchString: '',
+      tabIndex: 0,
+      artworks: []
     }
   },
 
@@ -37,14 +38,27 @@ export default {
 
     setTab(index) {
       this.tabIndex = index;
+      this.lastUsedTab = index;
     },
 
     togglePublished(artwork) {
       db.ref(`artworks/${ artwork.id }/published`).set(!artwork.published);
     },
 
-    status(artwork) {
-      return artwork.published ? 'Published' : 'Unpublished';
+    findArt() {
+      this.fetchData();
+      this.tabIndex = this.lastUsedTab;
+      let search = this.searchString.trim().toLowerCase();
+
+      if (search.length > 0) {
+        this.tabIndex = 2;
+
+        this.filteredArtworks = this.artworks.filter((art) => {
+          return (
+            art.title.toLowerCase().match(search) || art.artist.toLowerCase().match(search) || art.mediums.toLowerCase().match(search) || art.year.toString().match(search)
+          );
+        });
+      }
     }
   }
 }
