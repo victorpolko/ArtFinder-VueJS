@@ -1,6 +1,11 @@
 <template lang="pug">
 
   .artworks-list
+    nav.uk-navbar-container.uk-margin(uk-navbar)
+      .uk-navbar-left
+        router-link.uk-navbar-item.uk-logo(:to="{ name: 'index' }")
+          img(src="/logo.png")
+
     ul.uk-tab.uk-flex-center
       li(v-bind:class="{ 'uk-active': isTab(0) }")
         a(href="#" v-on:click="setTab(0)") Published Artworks

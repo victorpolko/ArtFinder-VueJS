@@ -1,6 +1,11 @@
 <template lang="pug">
 
   .artwork
+    nav.uk-navbar-container.uk-margin(uk-navbar)
+      .uk-navbar-left
+        router-link.uk-navbar-item.uk-logo(:to="{ name: 'index' }")
+          img(src="/logo.png")
+
     ul.uk-breadcrumb
       li
         router-link(:to="{ name: 'index' }")
