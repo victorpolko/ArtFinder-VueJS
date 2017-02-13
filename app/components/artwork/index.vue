@@ -6,12 +6,12 @@
         router-link.uk-navbar-item.uk-logo(:to="{ name: 'index' }")
           img(src="/logo.png")
 
-    ul.uk-breadcrumb
-      li
-        router-link(:to="{ name: 'index' }")
-          | All artworks
-      li.uk-active
-        span(v-show="artwork.title") {{ artwork.title }} by {{ artwork.artist }}
+        ul.uk-breadcrumb
+          li
+            router-link(:to="{ name: 'index' }")
+              | All artworks
+          li.uk-active
+            span(v-show="artwork.title") {{ artwork.title }} by {{ artwork.artist }}
 
     .uk-align-center.uk-width-1-2(uk-grid)
       .uk-card.uk-card-default
