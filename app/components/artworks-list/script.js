@@ -11,6 +11,7 @@ export default {
 
   created() {
     this.fetchData();
+    this.lastUsedTab = this.tabIndex;
   },
 
   methods: {
@@ -42,20 +43,27 @@ export default {
     },
 
     togglePublished(artwork) {
-      db.ref(`artworks/${ artwork.id }/published`).set(!artwork.published);
+      artwork.published = !artwork.published;
+      db.ref(`artworks/${ artwork.id }/published`).set(artwork.published);
+      this.findArt(false);
     },
 
-    findArt() {
+    findArt(switchToTab = true) {
       this.fetchData();
-      this.tabIndex = this.lastUsedTab;
+      if (switchToTab) this.setTab(this.lastUsedTab);
       let search = this.searchString.trim().toLowerCase();
 
       if (search.length > 0) {
-        this.tabIndex = 2;
+        if (switchToTab) this.setTab(2);
 
         this.filteredArtworks = this.artworks.filter((art) => {
           return (
-            art.title.toLowerCase().match(search) || art.artist.toLowerCase().match(search) || art.mediums.toLowerCase().match(search) || art.year.toString().match(search)
+            [
+              art.title,
+              art.artist,
+              art.mediums,
+              art.year + ''
+            ].some(elem => elem.toLowerCase().match(search))
           );
         });
       }

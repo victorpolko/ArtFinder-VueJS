@@ -1,7 +1,7 @@
 # VueJS SPA for art collections
 
 ### What?
-A test task.
+A test task: create an app for artworks using VueJS. I decided to use Firebase for fast API and Webpack for bundling.
 
 ### Why?
 To find out how VueJS works, how Webpack bundles, how Firebase works.

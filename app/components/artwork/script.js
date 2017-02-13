@@ -24,10 +24,6 @@ export default {
 
     togglePublished() {
       db.ref(`artworks/${ this.artwork.id }/published`).set(!this.artwork.published);
-    },
-
-    status() {
-      return this.artwork.published ? 'Published' : 'Unpublished'
     }
   }
 }

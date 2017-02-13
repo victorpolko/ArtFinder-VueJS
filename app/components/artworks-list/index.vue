@@ -18,6 +18,7 @@
       li(v-bind:class="{ 'uk-active': isTab(2) }" v-show="searchString.length")
         a(href="#" v-on:click="setTab(2)") Search
 
+    // Published Artworks tab content
     div(v-if="isTab(0)")
       div(v-if="publishedArtworks().length")
         table.uk-table.uk-table-small.uk-table-middle
@@ -36,7 +37,7 @@
               th Mediums
               th Artist
               th Year
-              th Published?
+              th
 
           tbody
             tr(v-for="artwork in publishedArtworks()")
@@ -57,6 +58,7 @@
       div(v-else)
         img.uk-align-center.uk-width-1-4(src="/empty.png")
 
+    // Unpublished Artworks tab content
     div(v-if="isTab(1)")
       div(v-if="unpublishedArtworks().length")
         table.uk-table.uk-table-small.uk-table-middle
@@ -75,7 +77,7 @@
               th Mediums
               th Artist
               th Year
-              th Published?
+              th
 
           tbody
             tr(v-for="artwork in unpublishedArtworks()")
