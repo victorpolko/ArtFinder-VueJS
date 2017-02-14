@@ -50,11 +50,11 @@ export default {
 
     findArt(switchToTab = true) {
       this.fetchData();
-      if (switchToTab) this.setTab(this.lastUsedTab);
+      if (switchToTab) this.tabIndex = this.lastUsedTab;
       let search = this.escapeRegExp(this.searchString.trim().toLowerCase());
 
       if (search.length > 0) {
-        if (switchToTab) this.setTab(2);
+        if (switchToTab) this.tabIndex = 2;
 
         this.filteredArtworks = this.artworks.filter((art) => {
           return (
