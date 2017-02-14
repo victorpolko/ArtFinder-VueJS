@@ -51,7 +51,7 @@ export default {
     findArt(switchToTab = true) {
       this.fetchData();
       if (switchToTab) this.setTab(this.lastUsedTab);
-      let search = this.searchString.trim().toLowerCase();
+      let search = this.escapeRegExp(this.searchString.trim().toLowerCase());
 
       if (search.length > 0) {
         if (switchToTab) this.setTab(2);
@@ -67,6 +67,10 @@ export default {
           );
         });
       }
+    },
+
+    escapeRegExp(str) {
+      return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
   }
 }
