@@ -13,6 +13,6 @@ config.plugins = [
       warnings: false
     }
   })
-]
+];
 
 export default config;

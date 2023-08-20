@@ -4,7 +4,7 @@ export default {
   data() {
     return {
       artwork: {}
-    }
+    };
   },
 
   created() {
@@ -17,13 +17,13 @@ export default {
 
   methods: {
     fetchData() {
-      db.ref(`/artworks/${ this.$route.params.artwork_id }`).on('value', (snapshot) => {
+      db.ref(`/artworks/${this.$route.params.artwork_id}`).on('value', (snapshot) => {
         this.artwork = snapshot.val();
       });
     },
 
     togglePublished() {
-      db.ref(`artworks/${ this.artwork.id }/published`).set(!this.artwork.published);
+      db.ref(`artworks/${this.artwork.id}/published`).set(!this.artwork.published);
     }
   }
-}
+};

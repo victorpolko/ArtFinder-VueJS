@@ -21,7 +21,7 @@ export default {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: [/node_modules/],
+        exclude: [/node_modules/]
       },
 
       {
@@ -39,7 +39,7 @@ export default {
 
       {
         test: /\.svg$/,
-        use: 'url-loader?limit=102400&name=[name]-[hash:base64].[ext]',
+        use: 'url-loader?limit=102400&name=[name]-[hash:base64].[ext]'
       }
     ]
   },
@@ -66,7 +66,7 @@ export default {
 
   devServer: {
     contentBase: path.join(__dirname, 'build'),
-    compress: NODE_ENV == 'production',
+    compress: NODE_ENV === 'production',
     port: 3000
   }
-}
+};

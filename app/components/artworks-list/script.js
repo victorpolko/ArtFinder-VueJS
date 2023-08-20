@@ -6,7 +6,7 @@ export default {
       searchString: '',
       tabIndex: 0,
       artworks: []
-    }
+    };
   },
 
   created() {
@@ -34,7 +34,7 @@ export default {
     },
 
     isTab(index) {
-      return this.tabIndex == index;
+      return this.tabIndex === index;
     },
 
     setTab(index) {
@@ -44,7 +44,7 @@ export default {
 
     togglePublished(artwork) {
       artwork.published = !artwork.published;
-      db.ref(`artworks/${ artwork.id }/published`).set(artwork.published);
+      db.ref(`artworks/${artwork.id}/published`).set(artwork.published);
       this.findArt(false);
     },
 
@@ -63,7 +63,7 @@ export default {
               art.artist,
               art.mediums,
               art.year + ''
-            ].some(elem => elem.toLowerCase().match(search))
+            ].some((elem) => _.deburr(elem).toLowerCase().match(search))
           );
         });
       }
@@ -73,4 +73,4 @@ export default {
       return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
   }
-}
+};

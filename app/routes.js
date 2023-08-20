@@ -1,6 +1,6 @@
 // Components
-import Artwork from 'artwork/'
-import ArtworksList from 'artworks-list/'
+import Artwork from 'artwork/';
+import ArtworksList from 'artworks-list/';
 
 export default [
   { name: 'home', path: '/', redirect: { name: 'index' } },
